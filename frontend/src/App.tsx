@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Posts from './pages/Posts';
 import User from './pages/User';
 import Users from './pages/Users';

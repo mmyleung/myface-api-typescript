@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { PostModel } from "../models/postModel";
 import Pagination from "../components/Pagination";
 
