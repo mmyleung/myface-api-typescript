@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { UserModel } from "../models/userModel";
+import { useParams } from 'react-router-dom';
 
 export default function User(){
+
+
+    let { userId } = useParams();
 
     const [user, setUser] = useState<UserModel>();
 
 useEffect(() => {
-  fetch("http://localhost:3001/users/1")
+  fetch(`http://localhost:3001/users/${userId}`)
   .then((response) => response.json())
   .then((data) => setUser(data));
 }, [])
