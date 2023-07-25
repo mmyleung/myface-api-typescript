@@ -1,43 +1,39 @@
-import { UserModel } from "../models/userModel";
+import { Page } from "../models/page";
 import { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Routes, useParams, useLocation } from "react-router-dom";
 
-export default function Pagination(){
+interface PaginationProps <T> {
+  apiPath: string,
+  resultElement: (result:T) => JSX.Element
+}
 
-    const [users, setUsers] = useState<UserModel>();
+export default function Pagination<T>({apiPath, resultElement}:PaginationProps<T>){
+
+    const location = useLocation();
+    const [page, setPage] = useState<Page<T>>();
 
     useEffect(() => {
-      fetch("http://localhost:3001/users")
+      console.log(location.search)
+      fetch(`http://localhost:3001/${apiPath}${location.search}`)
       .then((response) => response.json())
-      .then((data) => setUsers(data));
-    }, [])
+      .then((data) => setPage(data));
+    }, [location.search])
     
 
     return (
-        
-        <Router>
          <div>
+          {page === undefined 
+          ? <p>Loading</p>
+          :
+          <>
+          {page.results.map(result => resultElement(result))}
           <nav>
-            <ul>
-              <li>
-                <Link to={users.next}>Posts</Link>
-               </li>
-               <li>
-               <Link to={users.previous}>Posts</Link>
-              </li>
-            </ul>
-          </nav>
-          <Routes>
-              <Route path="/Users"  element={<Posts/>} />
-              <Route path="/Users"  element={<Users/>} />
-          </Routes>
-           
+            {page.next && <Link to={page.next}>Next</Link>}
+            {page.previous && <Link to={page.previous}>Previous</Link>}
+          </nav>  
+          </>        
+          }
          </div>
-      </Router>
-
-      
-        
-        
        );
      }
   
