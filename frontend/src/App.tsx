@@ -2,7 +2,7 @@ import './App.scss';
 import Posts from './pages/Posts';
 import User from './pages/User';
 import Users from './pages/Users';
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from './components/Navbar';
 import CreateUser from './pages/CreateUser';
 
