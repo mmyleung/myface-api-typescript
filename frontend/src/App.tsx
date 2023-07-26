@@ -6,14 +6,12 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-const [toggle, setToggle] = useState(false);
-
 function AppRouter() {
    return (
       <Router>
        <div>
         <nav className='nav-bar'>
-          <button className = "hamburger-container" id="nav-bar-button" onClick={() => setToggle(toggle)}>
+          <button className = "hamburger-container" id="nav-bar-button" >
             <FontAwesomeIcon icon={faBars}/>
           </button>
 
