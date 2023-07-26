@@ -3,38 +3,21 @@ import Posts from './pages/Posts';
 import User from './pages/User';
 import Users from './pages/Users';
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import Navbar from './components/Navbar';
+import CreateUser from './pages/CreateUser';
 
-const [toggle, setToggle] = useState(false);
 
 function AppRouter() {
    return (
       <Router>
+        <Navbar/>
        <div>
-        <nav className='nav-bar'>
-          <button className = "hamburger-container" id="nav-bar-button" onClick={() => setToggle(toggle)}>
-            <FontAwesomeIcon icon={faBars}/>
-          </button>
-
-          <div className='links-container'>
-          <ul>
-            <li>
-              <Link to="/Posts">Posts</Link>
-             </li>
-             <li>
-              <Link to="/Users">Users</Link>
-            </li>
-             <li>
-              <Link to="2">Profile</Link>
-            </li>
-          </ul>
-          </div>
-        </nav>
+        
         <Routes>
-            <Route path="/Posts"  element={<Posts/>} />
-            <Route path="/Users"  element={<Users/>} />
-            <Route path=":userId"  element={<User/>} />
+            <Route path="/posts"  element={<Posts/>} />
+            <Route path="/users"  element={<Users/>} />
+            <Route path="/users/:userId"  element={<User/>} />
+            <Route path="/users/create"  element={<CreateUser/>} />
         </Routes>
          
        </div>

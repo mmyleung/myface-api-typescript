@@ -1,0 +1,18 @@
+//variables
+$background:#252A38;
+$darker-background:#151820;
+$default-foreground: #DCDCDC;
+$primary:#2985FF;
+
+$regular-text:400;
+$bold:600;
+$lighter:300;
+
+.user-form-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
