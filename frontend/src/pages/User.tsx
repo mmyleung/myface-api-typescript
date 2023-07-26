@@ -20,49 +20,72 @@ return (
     {user === undefined 
     ? <p>Loading</p>
      :<div>
-        <img src={user.coverImageUrl}/>
-        <img src={user.profileImageUrl}/>
-        <h2>{user.name}</h2>
-        <h3>{user.username}</h3>
-        <h3>{user.email}</h3>
-        <div>
-            {user.posts.map(post=>(
-                <div>
-                   <img src={post.imageUrl}/>  
-                   <p>{post.createdAt}</p> 
-                   <p>{post.message}</p> 
-                   
-                </div>)
-                
-            )}
+        <img className="cover-image" src={user.coverImageUrl}/>
+        <div className="user-info-container">
+            <img className="profile-image" src={user.profileImageUrl}/>
+            <div className="user-info">
+                <h2 className="full-name">{user.name}</h2>
+                <h3 className="username">{user.username}</h3>
+                <h3 className="email">{user.email}</h3>
+            </div>
+        </div>
+        <section>
+            <h2>{user.name.split(" ")[0]}'s Post</h2>
+            <div className="posts-container">
+                <ol>
+                    {user.posts.map(post=>(
+                        <li>
+                            <div className="post-container">
+                                <img className="post-img" src={post.imageUrl}/>  
+                                <div className="post-text-container">
+                                    <h3>{user.username}</h3>
+                                    <p>{post.createdAt}</p> 
+                                    <h4>{post.message}</h4> 
+                                </div>
+                            </div>
+                        </li>)
+                    )}
+                </ol>
+            </div>
             
-        </div>
+            
+        </section>
 
-        <div>
-            <p>Likes:</p>
-            {user.likes.map(post=>(
-                <div>
-                   <img src={post.imageUrl}/>  
-                   <p>{post.createdAt}</p> 
-                   <p>{post.message}</p> 
-                   
-                </div>)
-                
-            )}
-        </div>
+        <section>
+            <h2>Posts {user.name.split(" ")[0]} Liked</h2>
+            <div className="posts-container">
+                <ol>
+                    {user.likes.map(post=>(
+                        <li>
+                            <div className="post-container">
+                            <img className="post-img" src={post.imageUrl}/>  
+                                <p>{post.createdAt}</p> 
+                                <h4>{post.message}</h4> 
+                            </div>
+                        </li> 
+                        )
+                    )}
+                </ol>
+            </div>
+        </section>
 
-        <div>
-            <p>Dislikes:</p>
-            {user.dislikes.map(post=>(
-                <div>
-                   <img src={post.imageUrl}/>  
-                   <p>{post.createdAt}</p> 
-                   <p>{post.message}</p> 
-                   
-                </div>)
-                
-            )}
-        </div>
+        <section>
+            <h2>Posts {user.name.split(" ")[0]} Disliked</h2>
+                <div className="posts-container">
+                    <ol>
+                        {user.dislikes.map(post=>(
+                            <li>
+                                <div className="post-container">
+                                <img className="post-img" src={post.imageUrl}/>  
+                                    <p>{post.createdAt}</p> 
+                                    <h4>{post.message}</h4> 
+                                </div>
+                            </li> 
+                            )
+                        )}
+                    </ol>
+                </div>
+        </section>
      </div> 
      }
   </div>

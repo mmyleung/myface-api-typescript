@@ -3,13 +3,21 @@ import Posts from './pages/Posts';
 import User from './pages/User';
 import Users from './pages/Users';
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
+const [toggle, setToggle] = useState(false);
 
 function AppRouter() {
    return (
       <Router>
        <div>
-        <nav>
+        <nav className='nav-bar'>
+          <button className = "hamburger-container" id="nav-bar-button" onClick={() => setToggle(toggle)}>
+            <FontAwesomeIcon icon={faBars}/>
+          </button>
+
+          <div className='links-container'>
           <ul>
             <li>
               <Link to="/Posts">Posts</Link>
@@ -21,6 +29,7 @@ function AppRouter() {
               <Link to="2">Profile</Link>
             </li>
           </ul>
+          </div>
         </nav>
         <Routes>
             <Route path="/Posts"  element={<Posts/>} />
