@@ -15,4 +15,15 @@ $lighter:300;
     justify-content: center;
     align-items: center;
     width: 100vw;
+
+    .error-message{
+        display: none;
+    }
+
+    &.submitted{
+        input:invalid + .error-message{
+            display: block;
+            color: red;
+        } 
+    }
 }

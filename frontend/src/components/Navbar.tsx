@@ -12,12 +12,13 @@ export default function Navbar(){
 
 
     return(
-        <div>
+        <div className='main-container'>
+         
         <nav className={`Navbar ${navbarExpanded ? "Navbar--expanded" : ""}`}>
-        <button className = "Navbar__toggler" id="nav-bar-button" onClick={() => setNavbarExpanded(!navbarExpanded)} >
-          <FontAwesomeIcon icon={faBars}/>
-        </button>
-
+            <button className = "Navbar__toggler" id="nav-bar-button" onClick={() => setNavbarExpanded(!navbarExpanded)} >
+            <FontAwesomeIcon icon={faBars}/>
+            </button>   
+        </nav>
         <div className='Navbar__links'>
         <ul>
           <li>
@@ -34,7 +35,7 @@ export default function Navbar(){
           </li>
         </ul>
         </div>
-      </nav>
+     
         </div>
     )
 }

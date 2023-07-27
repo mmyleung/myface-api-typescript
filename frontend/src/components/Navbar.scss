@@ -12,12 +12,23 @@ $lighter:300;
 
 .Navbar {
     z-index: 2;
-    position: absolute;
-    width: 0vw;
-    height: 100vh;
-    top:0;
-    right: 0;
-    overflow: hidden;
+    position: relative;
+    width: 100vw;
+    height: 2em;
+    
+    // overflow: hidden;
+
+    &__toggler {
+      // float: right;
+       background-color: transparent;
+      border: none;
+      z-index: 3;
+      position: absolute;
+      top:0;
+      right:0;
+      color: $default-foreground;
+      height:2em;
+  }
 
     &__links {
         display: none;
@@ -38,14 +49,7 @@ $lighter:300;
       }
     
 
-    &__toggler {
-        float: right;
-         background-color: transparent;
-        border: none;
-        z-index: 3;
-        position: relative;
-        color: $default-foreground;
-    }
+    
        
     &--expanded {
         .Navbar__links{
@@ -59,4 +63,6 @@ $lighter:300;
 
   
 
-
+.main-container{
+  height:3em;
+}
